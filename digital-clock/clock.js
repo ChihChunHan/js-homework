@@ -1,135 +1,108 @@
-let hourT, hourX, minT, minX, secT, secX
+const shadow = `drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.3))`
+let timeArray = []
+let number=[
+    [1,0,1,1,1,1,1], //0
+    [0,0,0,0,0,1,1], //1
+    [1,1,1,0,1,1,0], //2
+    [1,1,1,0,0,1,1], //3
+    [0,1,0,1,0,1,1], //4
+    [1,1,1,1,0,0,1], //5
+    [1,1,1,1,1,0,1], //6
+    [1,0,0,0,0,1,1], //7
+    [1,1,1,1,1,1,1], //8
+    [1,1,1,1,0,1,1]  //9
+];
+
 
 function getTime() {
     let time = new Date();
     let hour = time.getHours();
     let min = time.getMinutes();
     let sec = time.getSeconds();
-
-    hourT = Math.floor(hour / 10);
-    hourX = hour % 10;
-    minT = Math.floor(min / 10);
-    minX = min % 10;
-    secT = Math.floor(sec / 10);
-    secX = sec % 10;
-
-    console.log(hourT, hourX, minT, minX, secT, secX);
+    timeArray = [
+        Math.floor(hour / 10),
+        hour % 10,
+        Math.floor(min / 10),
+        min % 10,
+        Math.floor(sec / 10),sec % 10
+    ]
+    console.log(timeArray)
 }
-
-let number=[];
-number[0]=[1,0,1,1,1,1,1],number[1]=[0,0,0,0,0,1,1],number[2]=[1,1,1,0,1,1,0],number[3]=[1,1,1,0,0,1,1];number[4]=[0,1,0,1,0,1,1],number[5]=[1,1,1,1,0,0,1],number[6]=[1,1,1,1,1,0,1],number[7]=[1,0,0,0,0,1,1],number[8]=[1,1,1,1,1,1,1],number[9]=[1,1,1,1,0,1,1];
-
 
 let num = document.getElementsByClassName("number")
 
-function showon() {
-    
+function start () {
     for (let i = 0; i < 6; i++) {
-        let bar = num[i].getElementsByClassName("bar");
-        for (let j = 0; j < 7; j++) {
-            bar[j].classList.add("animate")
+    let bar = num[i].getElementsByClassName("bar");
+        for(let j=0; j<7; j++){
+            if(number[timeArray[i]][j]==1)
+            // bar[j].classList.add("animate");
+            bar[j].style.filter=shadow
         }
     }
-    for (let i = 0; i < 7; i++) {
-        if(number[secX][i]==1){
-        num[5].getElementsByClassName("bar")[i].classList.add("animateoff")
-        }
-    }
-
 }
 
-function numAnimate(id, timeNum) {
-    
-    let bar = num[id].getElementsByClassName("bar");
-    let nextTime = (timeNum+1)%10
-
-    for (let i = 0; i < 7; i++) {
-        if(number[timeNum][i]+number[nextTime][i]===1){
-            bar[i].classList.remove("animateoff")
+function show(set) {
+    let bar = num[set].getElementsByClassName("bar");
+    let prevTime
+    if(set==3||set==5) prevTime = (timeArray[set]===0)?9:(timeArray[set]-1)
+    if(set==2||set==4) prevTime = (timeArray[set]===0)?5:(timeArray[set]-1)
+    for(let j=0; j<7; j++){
+        bar[j].classList.remove("fade");
+        bar[j].classList.remove("animate");
+        if(number[timeArray[set]][j]>number[prevTime][j]){
+            bar[j].classList.add("animate");
+            bar[j].style.filter=shadow
         }
-        else{
-            bar[i].classList.add("animateoff")
+        if(number[timeArray[set]][j]<number[prevTime][j]){
+            bar[j].classList.add("fade");
+            bar[j].style.filter=`none`
         }
     }
-
-    
-
-// for (let i = 0; i < num.length; i++) {
-//     bar[i].classList.remove("animate");
-// }
-// switch (number) {
-//     case 0:
-//     for (let j = 0; j < 7; j++) {
-//         if (j == 1) continue;
-//         bar[j].classList.add("animate");
-//     }
-//     break;
-//     case 1:
-//     for (let j = 0; j < 7; j++) {
-//         if (j < 5) continue;
-//         bar[j].classList.add("animate");
-//     }
-//     break;
-//     case 2:
-//     for (let j = 0; j < 7; j++) {
-//         if (j == 3 || j == 6) continue;
-//         bar[j].classList.add("animate");
-//     }
-//     break;
-//     case 3:
-//     for (let j = 0; j < 7; j++) {
-//         if (j == 3 || j == 4) continue;
-//         bar[j].classList.add("animate");
-//     }
-//     break;
-//     case 4:
-//     for (let j = 0; j < 7; j++) {
-//         if (j == 0 || j == 2 || j == 4) continue;
-//         bar[j].classList.add("animate");
-//     }
-//     break;
-//     case 5:
-//     for (let j = 0; j < 7; j++) {
-//         if (j == 4 || j == 5) continue;
-//         bar[j].classList.add("animate");
-//     }
-//     break;
-//     case 6:
-//     for (let j = 0; j < 7; j++) {
-//         if (j == 5) continue;
-//         bar[j].classList.add("animate");
-//     }
-//     break;
-//     case 7:
-//     for (let j = 0; j < 7; j++) {
-//         if (j != 0 && j < 5) continue;
-//         bar[j].classList.add("animate");
-//     }
-//     break;
-//     case 8:
-//     for (let j = 0; j < 7; j++) {
-//         bar[j].classList.add("animate");
-//     }
-//     break;
-//     case 9:
-//     for (let j = 0; j < 7; j++) {
-//         if (j == 4) continue;
-//         bar[j].classList.add("animate");
-//     }
-//     break;
-// }
 }
 
+getTime()
 
 setInterval(()=>{
     getTime()
 },1000)
 
-showon()
+start()
+setInterval(() => {
+    show(5)
+}, 1000);
 
-// setTimeout(()=>{
-//     setInterval(()=>{
-//         numAnimate(5, secX);
-//     },1000)
-// },1000)
+setTimeout(()=>{
+    show(4)
+    setInterval(() => {
+        show(4)
+    }, 1000*10);
+},(10-timeArray[5])*1000)
 
+setTimeout(()=>{
+    show(3)
+    setInterval(() => {
+        show(3)
+    }, 1000*10*60);
+},(60-((timeArray[4]*10)+timeArray[5]))*1000)
+
+setTimeout(()=>{
+    show(2)
+    setInterval(() => {
+        show(2)
+    }, 1000*10*60*10);
+},(10-timeArray[3])*1000*60)
+
+setTimeout(()=>{
+    show(1)
+    setInterval(() => {
+        show(1)
+    }, 1000*10*60*60);
+},(60-((timeArray[2]*10)+timeArray[3]))*1000*60)
+
+setTimeout(()=>{
+    show(0)
+    setInterval(() => {
+        show(0)
+    }, 1000*10*60*10);
+},(10-timeArray[1])*1000*60*60)

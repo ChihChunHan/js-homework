@@ -11,7 +11,7 @@
 }
 
 .clockframe {
-    border: 1px solid #000;
+    /* border: 1px solid #000; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,11 +37,13 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background: #000;
+    background: #fff;
+    filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.3))
+
 }
 
 .number {
-    border: 1px solid #000;
+    /* border: 1px solid #000; */
     width: 124px;
     height: 228px;
     position: relative;
@@ -114,20 +116,26 @@
 }
 
 .animate {
-    animation: shadow 1s infinite;
+    animation: showup 1s;
 }
 
-.animateoff {
-    animation-play-state: paused;
+.fade {
+    animation: fade 1s;
 }
 
-@keyframes shadow {
+@keyframes showup {
     0% {
         filter: none
     }
 
-    50% {
-        filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.3))
+    100% {
+        filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.3))
+    }
+}
+
+@keyframes fade {
+    0% {
+        filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.3))
     }
 
     100% {
