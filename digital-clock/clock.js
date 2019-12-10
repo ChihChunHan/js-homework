@@ -83,26 +83,26 @@ setTimeout(()=>{
     show(3)
     setInterval(() => {
         show(3)
-    }, 1000*10*60);
+    }, 1000*60);
 },(60-((timeArray[4]*10)+timeArray[5]))*1000)
 
 setTimeout(()=>{
     show(2)
     setInterval(() => {
         show(2)
-    }, 1000*10*60*10);
+    }, 1000*60*10);
 },(10-timeArray[3])*1000*60)
 
 setTimeout(()=>{
     show(1)
     setInterval(() => {
         show(1)
-    }, 1000*10*60*60);
+    }, 1000*60*60);
 },(60-((timeArray[2]*10)+timeArray[3]))*1000*60)
 
 setTimeout(()=>{
     show(0)
     setInterval(() => {
         show(0)
-    }, 1000*10*60*10);
+    }, 1000*60*60*10);
 },(10-timeArray[1])*1000*60*60)
