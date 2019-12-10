@@ -1,0 +1,182 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+}
+
+.clockframe {
+    /* border: 1px solid #000; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hour, .min ,.sec {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dots {
+    width: 50px;
+    height: 228px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 
+        1px 1px 6px rgb(0,0,0,0.1),
+        3px 3px 6px rgb(0,0,0,0.1),
+        5px 5px 8px 1px rgb(50,50,50,0.1),
+        7px 7px 8px 1px rgb(50,50,50,0.1),
+        9px 9px 10px 2px rgb(120,120,120,0.1),
+        11px 11px 10px 2px rgb(120,120,120,0.1),
+        13px 13px 12px 3px rgb(180,180,180,0.1),
+        15px 15px 12px 3px rgb(180,180,180,0.1);
+
+}
+
+.number {
+    /* border: 1px solid #000; */
+    width: 124px;
+    height: 228px;
+    position: relative;
+    margin: 10px;
+}
+
+.bar {
+    width: 80px;
+    height: 20px;
+    position: absolute;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.bar:nth-child(1),
+.bar:nth-child(2),
+.bar:nth-child(6),
+.bar:nth-child(7){
+    width: 20px;
+    height: 80px;
+}
+
+
+
+.m1 {
+    top: 0;
+    left: calc(50% - 40px);
+}
+
+.m2 {
+    top: 104px;
+    left: calc(50% - 40px);
+}
+
+.m3 {
+    bottom: 0;
+    left: calc(50% - 40px);
+}
+
+.l1 {
+    top: 22px;
+    left: 0px
+}
+
+.l2 {
+    bottom: 22px;
+    left: 0px
+}
+
+.r1 {
+    top: 22px;
+    right: 0;
+}
+
+.r2 {
+    bottom: 22px;
+    right: 0;
+}
+
+.animate {
+    animation: showup 1s;
+}
+
+.fade {
+    animation: fade 1s;
+}
+
+@keyframes showup {
+    0% {
+        background: transparent;
+        box-shadow: 
+        0px 0px 4px rgb(0,0,0,0.1),
+        0px 0px 4px rgb(0,0,0,0.1),
+        0px 0px 0px 0px rgb(50,50,50,0.1),
+        0px 0px 0px 0px rgb(50,50,50,0.1),
+        0px 0px 0px 0px rgb(120,120,120,0.1),
+        0px 0px 0px 0px rgb(120,120,120,0.1),
+        0px 0px 0px 0px rgb(180,180,180,0.1),
+        0px 0px 0px 0px rgb(180,180,180,0.1);
+    }
+
+    100% {
+        background: #fff;
+        box-shadow: 
+        1px 1px 6px rgb(0,0,0,0.1),
+        3px 3px 6px rgb(0,0,0,0.1),
+        5px 5px 8px 1px rgb(50,50,50,0.1),
+        7px 7px 8px 1px rgb(50,50,50,0.1),
+        9px 9px 10px 2px rgb(120,120,120,0.1),
+        11px 11px 10px 2px rgb(120,120,120,0.1),
+        13px 13px 12px 3px rgb(180,180,180,0.1),
+        15px 15px 12px 3px rgb(180,180,180,0.1);
+    }
+}
+
+@keyframes fade {
+    0% {
+        background: #fff;
+        box-shadow: 
+        1px 1px 6px rgb(0,0,0,0.1),
+        3px 3px 6px rgb(0,0,0,0.1),
+        5px 5px 8px 1px rgb(50,50,50,0.1),
+        7px 7px 8px 1px rgb(50,50,50,0.1),
+        9px 9px 10px 2px rgb(120,120,120,0.1),
+        11px 11px 10px 2px rgb(120,120,120,0.1),
+        13px 13px 12px 3px rgb(180,180,180,0.1),
+        15px 15px 12px 3px rgb(180,180,180,0.1);
+    }
+
+    80% {
+        background: transparent;
+        box-shadow: 
+        0px 0px 4px rgb(0,0,0,0.1),
+        0px 0px 4px rgb(0,0,0,0.1),
+        0px 0px 0px 0px rgb(50,50,50,0.1),
+        0px 0px 0px 0px rgb(50,50,50,0.1),
+        0px 0px 0px 0px rgb(120,120,120,0.1),
+        0px 0px 0px 0px rgb(120,120,120,0.1),
+        0px 0px 0px 0px rgb(180,180,180,0.1),
+        0px 0px 0px 0px rgb(180,180,180,0.1);
+    }
+
+    100% {
+        background: transparent;
+        box-shadow:none;
+    }
+}
